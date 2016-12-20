@@ -1,0 +1,9 @@
+.auth-form{width:400px;margin:90px auto 0;padding:20px;background:#fff;}
+.auth-form h2{text-align:center;font-size:18px;margin-bottom:20px;}
+.auth{background:#444;}
+.auth-form .control-group{position:relative;}
+.auth .btn-item .btn{width:100%;}
+.auth .control-group .control-label{float:none;position:absolute;left:10px;top:0;width:auto;}
+.auth .control-group .controls{margin-left:0;}
+.auth .control-group .form-control{padding-left:33px;}
+.auth .control-group .form-control:focus ~ .control-label{color:#51a3ff;}
