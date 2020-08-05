@@ -6,10 +6,10 @@ class Po extends React.Component{
         super(props);
     }
     render(){
-        const value = this.props.cc;
+        const {cc,dd} = this.props;
         return (
             <div>
-                {value}
+                {cc}//<br/>{dd}
             </div>
             
             

@@ -3,7 +3,7 @@ import ReactDom from 'react-dom';
 import App from './route/'
 import store from './redux/store'
 import { Provider } from 'react-redux';
-
+import './i18n';
 
 
 // class App extends React.Component {

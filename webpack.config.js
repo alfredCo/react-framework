@@ -9,7 +9,7 @@ module.exports = (env,argv)=>{
         context: __dirname,
         entry: {
             "index":[
-                "./src/public/app.js"
+                "./src/app.js"
             ]
         },
         output: {
@@ -56,8 +56,9 @@ module.exports = (env,argv)=>{
         },
         resolve: {
             alias: {
+                
                 // 'vue$': 'vue/dist/vue.esm.js', // 用 webpack 1 时需用 'vue/dist/vue.common.js'
-                // '@':path.resolve(__dirname, 'src'),
+                '@':path.resolve(__dirname, 'src')
                 // '@view':path.resolve(__dirname, './src/public/view')
             }
         },

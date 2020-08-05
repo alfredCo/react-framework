@@ -1,5 +1,5 @@
 import React from 'react'
-import {BrowserRouter,Redirect,Route,HashRouter,Switch,Link} from 'react-router-dom';
+import {Route,HashRouter,Switch,Link} from 'react-router-dom';
 import Resource from '../view/resource/resource' 
 import Platform from '../view/platform/platform' 
  
@@ -11,6 +11,7 @@ let Home = ()=>{
   )
 }
 let Dashboards = ()=>{
+
   return (
     <div>Dashboard</div>
   )
@@ -42,20 +43,11 @@ class Login extends React.Component{
 let app = ()=>{
   return(
     <div>
-      {/* <HashRouter>
-        <Route path="/" component={Dashboard}>
-          <Route path="/login"><Login/></Route>
-          <Route path="/resource/resourceview" component={Resource}/>
-          <Route path="/pagemanage/platform" component={Platform}/>
-        </Route>
-      </HashRouter> */}
-
       <HashRouter>
         <Switch>
-          <Route path="/login" exact component={Login}></Route>
           <Route path="/" exact component={Dashboards}></Route>
-          <Route path="/login" component={Login}></Route>
-          <Route path="/resource/resourceview" component={Resource}/>
+          <Route path="/login" exact component={Login}></Route>
+          <Route exact path="/resource/resourceview" component={Resource}/>
           <Route path="/pagemanage/platform" component={Platform}/>
         </Switch>
       </HashRouter>

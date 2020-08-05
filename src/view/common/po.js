@@ -1,24 +1,18 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import Po from './po'
 
-class Reduc extends React.Component{
+
+class Po extends React.Component{
     constructor(props){
         super(props);
     }
     render(){
-        const {value,onPropAdd,onPropRemove} = this.props;
+        const {cc,dd} = this.props;
         return (
             <div>
-                platform
-                <div>
-                    clicked:{value}times,
-                    <button onClick={onPropAdd}>++</button>
-                    <button onClick={onPropRemove}>--</button>
-                    <Text text={value}><div>234</div></Text>
-                </div>
-                <Po cc={value}/>
+                {cc}//<br/>{dd}
             </div>
+            
+            
         )
     }
 }
@@ -43,7 +37,7 @@ function mapDispatchToProps(dispatch){
         onPropRemove:()=>{dispatch({type:"--"})}
     }
 }
-Reduc = connect(mapStateToProps,mapDispatchToProps)(Reduc)
+//Po = connect(mapStateToProps,mapDispatchToProps)(Po)
 
-export default Reduc
+export default Po
 
