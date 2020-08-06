@@ -1,8 +1,8 @@
 import React from 'react'
-import {Route,HashRouter,Switch,Link} from 'react-router-dom';
+import {Route,HashRouter,Switch,Link,BrowserRouter as Router,} from 'react-router-dom';
 import Resource from '../view/resource/resource' 
 import Platform from '../view/platform/platform' 
- 
+import Dashboard from '../view/layout/dashboard'
 
 
 let Home = ()=>{
@@ -10,19 +10,14 @@ let Home = ()=>{
     <div>Home</div>
   )
 }
-let Dashboards = ()=>{
-
+let blank = ()=>{
   return (
-    <div>Dashboard</div>
+    <div>
+    <Link to="/dashboard">resource</Link>
+    <Link to="/login/pagemanage">pagemanage</Link>
+    </div>
+    
   )
-}
-
-class Dashboard extends React.Component{
-  render(){
-    return (
-      <div>LoginxcxDashboardDashboardczcxz</div>
-    )
-  }
 }
 
 class Login extends React.Component{
@@ -45,8 +40,14 @@ let app = ()=>{
     <div>
       <HashRouter>
         <Switch>
-          <Route path="/" exact component={Dashboards}></Route>
+          <Route path="/" exact component={blank}></Route>
           <Route path="/login" exact component={Login}></Route>
+          {/* <Route path="/dashbaord/instance" component={Resource}></Route> */}
+          <Route path="/dashboard" children={({match}) =>{
+            return (
+              <Dashboard match={match}/>
+            )
+          }}/>
           <Route exact path="/resource/resourceview" component={Resource}/>
           <Route path="/pagemanage/platform" component={Platform}/>
         </Switch>
