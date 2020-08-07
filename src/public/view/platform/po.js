@@ -4,15 +4,20 @@ import React from 'react';
 class Po extends React.Component{
     constructor(props){
         super(props);
+        this.state = {
+            cc:this.props.cc
+        }
+    }
+    change(){
+        this.cc+=4;
+        this.setState({cc:this.state.cc+4})
     }
     render(){
         const {cc,dd} = this.props;
         return (
-            <div>
-                {cc}//<br/>{dd}
+            <div onClick={this.change.bind(this)}>
+                {this.state.cc}//<br/>{dd}
             </div>
-            
-            
         )
     }
 }

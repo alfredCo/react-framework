@@ -37,22 +37,20 @@ class Login extends React.Component{
 
 let app = ()=>{
   return(
-    <div>
-      <HashRouter>
-        <Switch>
-          <Route path="/" exact component={blank}></Route>
-          <Route path="/login" exact component={Login}></Route>
-          {/* <Route path="/dashbaord/instance" component={Resource}></Route> */}
-          <Route path="/dashboard" children={({match}) =>{
-            return (
-              <Dashboard match={match}/>
-            )
-          }}/>
-          <Route exact path="/resource/resourceview" component={Resource}/>
-          <Route path="/pagemanage/platform" component={Platform}/>
-        </Switch>
-      </HashRouter>
-    </div>
+    <HashRouter>
+      <Switch>
+        <Route path="/" exact component={blank}></Route>
+        <Route path="/login" exact component={Login}></Route>
+        {/* <Route path="/dashbaord/instance" component={Resource}></Route> */}
+        <Route path="/dashboard" children={({match}) =>{
+          return (
+            <Dashboard match={match}/>
+          )
+        }}/>
+        <Route exact path="/resource/resourceview" component={Resource}/>
+        <Route path="/pagemanage/platform" component={Platform}/>
+      </Switch>
+    </HashRouter>
   )
 }
 

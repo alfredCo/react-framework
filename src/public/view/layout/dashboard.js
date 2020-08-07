@@ -16,29 +16,34 @@ class Dashboard extends React.Component{
                 href:"/dashboard/instance",
                 text:"实例",
                 id:1,
+                keyword:'instance',
                 child:[]
             },
             {
                 href:"/cvm/volume",
                 text:"云硬盘",
                 id:2,
+                keyword:'volume',
                 child:[]
             },
             {
                 href:"",
                 text:"网络",
                 id:5,
+                keyword:'net',
                 child:[
                     {
                         href:"/cvm/network",
                         text:"网络",
                         id:3,
+                        keyword:'network',
                         child:[]
                     },
                     {
                         href:"/cvm/route",
                         text:"路由",
                         id:4,
+                        keyword:'route',
                         child:[]
                     }
                 ]
@@ -49,11 +54,11 @@ class Dashboard extends React.Component{
             <div>
                 <Header/>
                 <div className="main">
-                    <SideMenu data={menuData}/>
+                    <aside><SideMenu data={menuData}/></aside>
                     <div className="main-content">
                         <DashboardRoute match={match}/>
                     </div>
-                </div>    
+                </div>
             </div>
         )
     }

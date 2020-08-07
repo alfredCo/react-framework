@@ -9,7 +9,8 @@ module.exports = (env,argv)=>{
         context: __dirname,
         entry: {
             "index":[
-                "./src/app.js"
+                "./src/public/app.js",
+                './src/less/index.less'
             ]
         },
         output: {

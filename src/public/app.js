@@ -5,14 +5,5 @@ import store from './redux/store'
 import { Provider } from 'react-redux';
 import './i18n';
 
-
-// class App extends React.Component {
-//     render(){
-//         return <Routea/>
-//     }
-// }
-
-
-console.log(store);
 ReactDom.render(<Provider store={store}><App/></Provider>,document.getElementById('app'));
 
