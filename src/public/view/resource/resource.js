@@ -20,6 +20,12 @@ class Reduc extends React.Component{
             
         )
     }
+    componentDidMount(){
+        this.componentDidUpdate();
+    }
+    componentDidUpdate(){
+        console.log(window.location,456)
+    }
 }
 class Text extends React.Component{
     render(){

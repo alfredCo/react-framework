@@ -1,23 +1,29 @@
 import React from 'react';
-import {NavLink} from 'react-router-dom'
+import {NavLink,Link} from 'react-router-dom'
 import { withTranslation } from 'react-i18next'
 class Menu extends React.Component{
     constructor(props){
         super(props);
         this.isOpen = this.props.open;
-        this.keyword = this.props.item.keyword;
+        this.keyword = this.props.item.state.keyword;
     }
     render(){
         let item = this.props.item;
         return(
             item.child.length>0?
-            <div>
-                <span onClick={this.changeFlag.bind(this)}>{item.text}</span>
+            <div className="sub-menu">
+                <span className="text" onClick={this.changeFlag.bind(this)}>
+                    {item.icon?<i className={item.icon}></i>:""}
+                    {item.text}
+                </span>
                 <i className="icon-arrow"></i>
             </div>
             :
-            <NavLink to={item.href}>
-                {item.text}
+            <NavLink to={item} className="sub-menu">
+                <span className="text">
+                    {item.icon?<i className={item.icon}></i>:""}
+                    {item.text}
+                </span>
             </NavLink>
         )
     }
@@ -34,14 +40,17 @@ class MenuGroup extends React.Component{
         this.level+=1;
         this.state = {};
         this.props.data.forEach(item=>{
-            this.state[item.keyword] = false;
-        })
+            if(item.child.length>0){
+                this.state[item.state.keyword] = this.props.openKey[item.state.keyword];
+                //this.state[item.state.keyword]?this.currentKey = item.state.keyword:'';
+            }
+        });
     }
     toggle(flag,keyword){
-        console.log(flag,keyword);
         this.setState({[keyword]:flag});
-        this.currentKey = keyword;
+        //this.currentKey = keyword;
     }
+    
     render(){
         let menuData = this.props.data;
         return(
@@ -49,10 +58,10 @@ class MenuGroup extends React.Component{
                 {
                     menuData.map(item=>{
                         return (
-                        <li key={item.id} className={this.state[this.currentKey]&&item.keyword==this.currentKey?'open':''}>
-                            <Menu item={item} onEmit={this.toggle.bind(this)} open={this.state.flag}/>
+                        <li key={item.id} className={this.state[item.state.keyword]?'open':''}>
+                            <Menu item={item} onEmit={this.toggle.bind(this)} open={this.state[item.state.keyword]}/>
                             {
-                                item.child.length>0?<MenuGroup open={this.state.flag} data={item.child} level={this.level}/>:null
+                                item.child.length>0?<MenuGroup openKey={this.props.openKey} data={item.child} level={this.level}/>:null
                             }
                         </li>)
                     })
@@ -66,11 +75,36 @@ class MenuGroup extends React.Component{
 class SideMenu extends React.Component{
     constructor(props){
         super(props);
+        console.log(props.location);
+        this.openKey = this.getOpenKey(props.data,props.location.pathname);
+    }
+    componentDidMount(){
+        this.componentDidUpdate();
+    }
+    componentDidUpdate(){
+        //console.log(window.location,456)
+    }
+    getOpenKey(data,key){
+        let current = {};
+        for(let i=0;i<data.length;i++){
+            if(data[i].child.length>0){
+                current = Object.assign({},current,this.getOpenKey(data[i].child,key));
+                if(current[data[i].state.keyword]&&data[i].state.parent){
+                    current[data[i].state.parent] = true;
+                }
+            }else{
+                if(data[i].pathname===key){
+                    //current[data[i].state.keyword] = true;
+                    data[i].state.parent?current[data[i].state.parent] = true:'';
+                }
+            }
+        }
+        return current;
     }
     render(){
         let menuData = this.props.data;
         return(
-            <MenuGroup data={menuData}/>
+            <MenuGroup data={menuData} openKey={this.openKey}/>
         )
     }
 }

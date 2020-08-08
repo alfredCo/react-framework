@@ -161,13 +161,6 @@ body {
                     display: none;
                     width:200px;
                 }
-                .level2-active {
-                    .icon-arrow {
-                        &:before {
-                            content: '\e813';
-                        }
-                    }
-                }
                 .menu-level-2 {
                     .pointer{
                         width:4px;
@@ -205,16 +198,18 @@ body {
                 >li {
                     position: relative;
                     margin-bottom: 1px;
-                    a {
+                    .sub-menu {
+                        cursor:pointer;
+                        padding:0 10px;
                         color: #888;
                         display: block;
                         height: 40px;
                         line-height: 40px;
                         position: relative;
                         z-index: 100;
-                        span {
+                        .text {
                             display:block;
-                            padding: 0 26px 0 20px;
+                            padding: 0 26px 0 0;
                             white-space: nowrap;
                             height: 40px;
                             line-height: 40px;
@@ -222,10 +217,7 @@ body {
                             -moz-transition: all 0.3s linear 0s;
                             transition: all 0.3s linear 0s;
                             font-size: @moreFontSize;
-                            b {
-                                display: none;
-                            }
-                            >i {
+                            i {
                                 margin-right: 10px;
                                 width: 16px;
                                 display: inline-block;
@@ -255,88 +247,96 @@ body {
                             }
                         }
                     }
+                    .menu-level-2{
+                        display:none;
+                    }
+                    &.open{
+                        .menu-level-2{
+                            display:block;
+                        }
+                    }
                 }
             }
         }
         .main-content {
             position: relative;
-            margin: 0 0 0 16px;
+            margin: 0 0 0 240px;
             padding-top: 70px;
             -webkit-transition: opacity .5s ease-out 0s;
             -moz-transition: opacity .5s ease-out 0s;
             transition: opacity .5s ease-out 0s;
         }
     }
-    &.layoutopen {
-        .main {
-            aside {
-                width: 240px;
-                h2 {
-                    display: block;
-                }
-                .toggle-icon {
-                    i:before {
-                        content: '\e806';
-                    }
-                }
-                .menu-title {
-                    display: block;
-                    margin-bottom:10px;
-                }
-                .menu-level-1 {
-                    .has-child{
-                        .active{
-                            background:none;
-                            color:#fff;
-                            &:hover{
-                                background:none;
-                                color:#fff;
-                            }
-                        }
-                    }
-                    li {
-                        span {
-                            position: static;
-                            text-align: left;
-                            background: none;
-                            b {
-                                display: inline;
-                            }
-                        }
-                        .icon-arrow {
-                            display: block;
-                        }
-                    }
-                    >li{
-                        a{
-                            span{
-                                >i{
-                                    margin-right: 18px;
-                                }
-                            }
-                        }
-                    }
-                    .level2-active {
-                        .menu-level-2 {
-                            display: block;
-                        }
-                    }
-                    .menu-level-2 {
-                        a {
-                            span {
-                                padding: 0;
-                            }
-                        }
-                        position: static;
-                        display:none;
-                    }
-                }
-            }
-            .main-content{
-                margin-left:240px;
-            }
-        }
-    }
+    // &.layoutopen {
+    //     .main {
+    //         aside {
+    //             width: 240px;
+    //             h2 {
+    //                 display: block;
+    //             }
+    //             .toggle-icon {
+    //                 i:before {
+    //                     content: '\e806';
+    //                 }
+    //             }
+    //             .menu-title {
+    //                 display: block;
+    //                 margin-bottom:10px;
+    //             }
+    //             .menu-level-1 {
+    //                 .has-child{
+    //                     .active{
+    //                         background:none;
+    //                         color:#fff;
+    //                         &:hover{
+    //                             background:none;
+    //                             color:#fff;
+    //                         }
+    //                     }
+    //                 }
+    //                 li {
+    //                     span {
+    //                         position: static;
+    //                         text-align: left;
+    //                         background: none;
+    //                         b {
+    //                             display: inline;
+    //                         }
+    //                     }
+    //                     .icon-arrow {
+    //                         display: block;
+    //                     }
+    //                 }
+    //                 >li{
+    //                     a{
+    //                         span{
+    //                             >i{
+    //                                 margin-right: 18px;
+    //                             }
+    //                         }
+    //                     }
+    //                 }
+    //                 .level2-active {
+    //                     .menu-level-2 {
+    //                         display: block;
+    //                     }
+    //                 }
+    //                 .menu-level-2 {
+    //                     a {
+    //                         span {
+    //                             padding: 0;
+    //                         }
+    //                     }
+    //                     position: static;
+    //                     display:none;
+    //                 }
+    //             }
+    //         }
+    //         .main-content{
+    //             margin-left:240px;
+    //         }
+    //     }
+    // }
     &.closed {
         .main {
             aside {

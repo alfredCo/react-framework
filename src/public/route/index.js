@@ -42,9 +42,9 @@ let app = ()=>{
         <Route path="/" exact component={blank}></Route>
         <Route path="/login" exact component={Login}></Route>
         {/* <Route path="/dashbaord/instance" component={Resource}></Route> */}
-        <Route path="/dashboard" children={({match}) =>{
+        <Route path="/dashboard" children={({match,location}) =>{
           return (
-            <Dashboard match={match}/>
+            <Dashboard match={match} location={location}/>
           )
         }}/>
         <Route exact path="/resource/resourceview" component={Resource}/>
