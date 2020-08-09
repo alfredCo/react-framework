@@ -8,10 +8,10 @@ class MentTitle extends React.Component{
     }
     
     render(){
-        let {curKey,t} = this.props;
+        let {t,curMenuKey} = this.props;
         return(
             <div>
-                {curKey}--{t(curKey)}
+                {curMenuKey.pathname}--{t(curMenuKey.pathname)}
             </div>
         )
     }

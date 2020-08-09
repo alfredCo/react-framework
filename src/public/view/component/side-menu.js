@@ -82,7 +82,7 @@ class SideMenu extends React.Component{
         this.componentDidUpdate();
     }
     componentDidUpdate(){
-        //console.log(window.location,456)
+        console.log(this.openKey)
     }
     getOpenKey(data,key){
         let current = {};
@@ -94,7 +94,6 @@ class SideMenu extends React.Component{
                 }
             }else{
                 if(data[i].pathname===key){
-                    //current[data[i].state.keyword] = true;
                     data[i].state.parent?current[data[i].state.parent] = true:'';
                 }
             }

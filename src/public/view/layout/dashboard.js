@@ -16,7 +16,7 @@ class Dashboard extends React.Component{
         }
         this.menuData = [
             {
-                pathname:"/dashboard/cvm/instance",
+                pathname:"/dashboard/instance",
                 text:"实例",
                 icon:'icon-aw-jqm',
                 id:1,
@@ -26,7 +26,7 @@ class Dashboard extends React.Component{
                 child:[]
             },
             {
-                pathname:"/dashboard/cvm/volume",
+                pathname:"/dashboard/volume",
                 text:"云硬盘",
                 icon:'icon-aw-jqm',
                 id:2,
@@ -45,11 +45,11 @@ class Dashboard extends React.Component{
                 },
                 child:[
                     {
-                        pathname:"/dashboard/network/switch",
+                        pathname:"/dashboard/netswitch",
                         text:"网络",
                         id:3,
                         state:{
-                            keyword:'switch',
+                            keyword:'netswitch',
                             parent:'network'
                         },
                         child:[]
@@ -59,17 +59,17 @@ class Dashboard extends React.Component{
                         text:"路由",
                         id:4,
                         state:{
-                            keyword:'route',
+                            keyword:'netroute',
                             parent:'network'
                         },
                         child:[
                             {
-                                pathname:"/dashboard/network/route/aa",
+                                pathname:"/dashboard/netroute/aa",
                                 text:"aa",
                                 id:6,
                                 state:{
                                     keyword:'aa',
-                                    parent:'route'
+                                    parent:'netroute'
                                 },
                                 child:[]
                             },
@@ -79,7 +79,7 @@ class Dashboard extends React.Component{
                                 id:7,
                                 state:{
                                     keyword:'bb',
-                                    parent:'route'
+                                    parent:'netroute'
                                 },
                                 child:[]
                             }
@@ -105,7 +105,7 @@ class Dashboard extends React.Component{
                 <div className="main">
                     <aside><SideMenu data={this.menuData} location={this.props.location}/></aside>
                     <div className="main-content">
-                        <MenuTitle curMenuKey={this.state.curMenuKey}/>
+                        <MenuTitle curMenuKey={this.props.location}/>
                         <DashboardRoute/>
                     </div>
                 </div>

@@ -1,31 +1,30 @@
 import React from 'react'
 import {Route,Switch,Redirect} from 'react-router-dom';
 import Resource from '../view/resource/resource'
-
+import Instance from '../view/instance/instance'
+import Volume from '../view/volume/volume'
+import NetSwitch from '../view/switch/switch'
+import NetRoute from '../view/route/route'
 const menuList = [
     {
-        path:"/dashboard/cvm/instance",
-        component:Resource,
-        keyword:"instance",
-        parent:""
+        path:"/dashboard/instance",
+        component:Instance,
+        keyword:"instance"
     },
     {
-        path:"/dashboard/cvm/volume",
-        component:Resource,
-        keyword:"volume",
-        parent:""
+        path:"/dashboard/volume",
+        component:Volume,
+        keyword:"volume"
     },
     {
-        path:"/dashboard/network/switch",
-        component:Resource,
-        keyword:"switch",
-        parent:"network"
+        path:"/dashboard/netswitch",
+        component:NetSwitch,
+        keyword:"netswitch"
     },
     {
-        path:"/dashboard/network/route",
-        component:Resource,
-        keyword:"route",
-        parent:"network"
+        path:"/dashboard/netroute",
+        component:NetRoute,
+        keyword:"netroute"
     }
 ]
 
@@ -35,15 +34,11 @@ let app = (props)=>{
             {
                 menuList.map(item=>(
                     <Route path={item.path} key={item.keyword} children={({match,location}) =>{
-                        console.log(match,location)
-                        if(match.path==item.path){
-                            //console.log('current',item.keyword,item.parent);
-                            //props.onEmit(item);
-                        }
                         return (
                             <item.component match={match}/>
                         )
-                    }}/>
+                    }}>
+                    </Route>
                 ))
             }
             <Redirect to={`/dashboard/cvm/instance`} />
