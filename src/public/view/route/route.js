@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 class Reduc extends React.Component{
     constructor(props){
         super(props);
+        console.log(this.props.match)
     }
     render(){
         const {value,onPropAdd,onPropRemove} = this.props;

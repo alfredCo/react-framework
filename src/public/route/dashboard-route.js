@@ -25,6 +25,11 @@ const menuList = [
         path:"/dashboard/netroute",
         component:NetRoute,
         keyword:"netroute"
+    },
+    {
+        path:"/dashboard/netroute/:id",
+        component:NetRoute,
+        keyword:"netrouteId"
     }
 ]
 
@@ -33,15 +38,15 @@ let app = (props)=>{
         <Switch>
             {
                 menuList.map(item=>(
-                    <Route path={item.path} key={item.keyword} children={({match,location}) =>{
+                    <Route path={item.path} exact key={item.keyword} children={({match,location}) =>{
                         return (
-                            <item.component match={match}/>
+                            <item.component match={match} location={location}/>
                         )
                     }}>
                     </Route>
                 ))
             }
-            <Redirect to={`/dashboard/cvm/instance`} />
+            <Redirect to={`/dashboard/instance`} />
         </Switch>
     )
 }

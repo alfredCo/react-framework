@@ -10,10 +10,7 @@ import Resource from '../resource/resource'
 class Dashboard extends React.Component{
     constructor(props){
         super(props);
-        this.state = {
-            openKey:"",
-            curMenuKey:""
-        }
+        
         this.menuData = [
             {
                 pathname:"/dashboard/instance",
@@ -55,35 +52,24 @@ class Dashboard extends React.Component{
                         child:[]
                     },
                     {
-                        pathname:"",
+                        pathname:"/dashboard/netroute",
                         text:"路由",
                         id:4,
                         state:{
                             keyword:'netroute',
                             parent:'network'
                         },
-                        child:[
-                            {
-                                pathname:"/dashboard/netroute/aa",
-                                text:"aa",
-                                id:6,
-                                state:{
-                                    keyword:'aa',
-                                    parent:'netroute'
-                                },
-                                child:[]
-                            },
-                            {
-                                pathname:"/dashboard/network/route/bb",
-                                text:"bb",
-                                id:7,
-                                state:{
-                                    keyword:'bb',
-                                    parent:'netroute'
-                                },
-                                child:[]
-                            }
-                        ]
+                        child:[]
+                    },
+                    {
+                        pathname:"/dashboard/netroute/ooo",
+                        text:"路由详情",
+                        id:9,
+                        state:{
+                            keyword:'netroute',
+                            parent:'network'
+                        },
+                        child:[]
                     }
                 ]
             }
@@ -95,8 +81,6 @@ class Dashboard extends React.Component{
     }
     componentDidUpdate(){
         console.log(this.props.location);
-        //let ddd = this.getOpenKey(this.menuData,this.props.location.pathname,null);
-        //this.setState({openKey:ddd});
     }
     render(){
         return(
@@ -105,7 +89,7 @@ class Dashboard extends React.Component{
                 <div className="main">
                     <aside><SideMenu data={this.menuData} location={this.props.location}/></aside>
                     <div className="main-content">
-                        <MenuTitle curMenuKey={this.props.location}/>
+                        <MenuTitle curMenuKey={this.props.match}/>
                         <DashboardRoute/>
                     </div>
                 </div>
