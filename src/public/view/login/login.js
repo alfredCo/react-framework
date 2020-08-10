@@ -12,10 +12,11 @@ class Login extends React.Component{
     render(){
         //const {value,onPropAdd,onPropRemove} = this.props;
         return (
-            <div>
-                <form>
+            <div className="login-page">
+                <form className="login-form" noValidate autoComplete="off">
+                    <legend>XXX管理平台</legend>
                     <div className="control-group">
-                        <input type='text' name="name" className="form-control" value={this.state.name} onChange={this.nameChange.bind(this)}/>
+                        <input type='text' name="name"  className="form-control" value={this.state.name} onChange={this.nameChange.bind(this)}/>
                     </div>
                     <div className="control-group">
                         <input type='password' name="password" className="form-control" value={this.state.password} onChange={this.passwordChange.bind(this)}/>
