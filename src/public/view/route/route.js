@@ -17,8 +17,6 @@ class Reduc extends React.Component{
                     <Text text={value}><div>234</div></Text>
                 </div>
             </div>
-            
-            
         )
     }
     componentDidMount(){

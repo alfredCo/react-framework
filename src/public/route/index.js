@@ -1,5 +1,5 @@
 import React from 'react'
-import {Route,HashRouter,Switch} from 'react-router-dom'; 
+import {Route,HashRouter,Switch,Redirect} from 'react-router-dom'; 
 import Dashboard from '../view/layout/dashboard'
 import Login from '../view/login/login'
 
@@ -10,11 +10,16 @@ let app = ()=>{
       <Switch>
         <Route path="/" exact component={Login}></Route>
         <Route path="/dashboard" children={({match,location}) =>{
-            return (
-                <div>
-                    <Dashboard match={match} location={location}/>
-                </div>
-            )
+            if(localStorage.isLogin){
+              return (
+                  <div>
+                      <Dashboard match={match} location={location}/>
+                  </div>
+              )
+            }else{
+              return <Redirect to='/' />
+            }
+            
         }}/>
       </Switch>
     </HashRouter>

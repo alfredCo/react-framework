@@ -3,15 +3,9 @@ import axios from 'axios';
 axios.interceptors.request.use(function (config) {
     // Do something before request is sent
     var url1,url2,url3;
-    if (config.url.indexOf("awstack-maas") > -1) {
-        url1 = config.url.split("awstack-maas");
-        config.url = window.GLOBALCONFIG.APIHOST.MAAS + url1[1];
-    }else if(config.url.indexOf("awstack-user") > -1){
-        url2 = config.url.split("awstack-user");
-        config.url = window.GLOBALCONFIG.APIHOST.BASE + url2[1];
-    }else if(config.url.indexOf("awstack-resource") > -1){
-        url3 = config.url.split("awstack-resource");
-        config.url = window.GLOBALCONFIG.APIHOST.RESOURCE + url3[1];
+    if (config.url.indexOf("awstack-user") > -1) {
+        url1 = config.url.split("awstack-user");
+        config.url = window.GLOBALCONFIG.APIHOST.BASE + url1[1];
     }
 
     var auth_token = localStorage.$AUTH_TOKEN;
@@ -46,13 +40,6 @@ axios.interceptors.response.use(function (res) {
     return res.data;
 }, function (error) {
     // Do something with response error
-    Notification({
-        //title: error.message,
-        message: error.message,
-        duration: 5000,
-        type: "error",
-        customClass: "error"
-    });
     return error;
 });
 export default axios
